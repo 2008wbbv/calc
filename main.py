@@ -36,6 +36,13 @@ def calculate_speed(distance, time, unit="mph"):
     return "Invalid unit. Please enter 'mph' or 'kph'."
   return speed
 
+def calculate_exponential_sequence(base, exponent):
+  """Calculates a sequence of numbers raised to increasing exponents."""
+  result = []
+  for i in range(exponent + 1):
+    result.append(base**i)
+  return result
+
 print("Select operation:")
 print("1. Add")
 print("2. Subtract")
@@ -44,13 +51,14 @@ print("4. Divide")
 print("5. Rectangle Area")
 print("6. Circle Area")
 print("7. Calculate Speed")
+print("8. Exponential Sequence")
 
 while True:
   # Take input from the user
-  choice = input("Enter choice(1/2/3/4/5/6/7): ")
+  choice = input("Enter choice(1/2/3/4/5/6/7/8): ")
 
-  # Check if choice is one of the seven options
-  if choice in ('1', '2', '3', '4', '5', '6', '7'):
+  # Check if choice is one of the eight options
+  if choice in ('1', '2', '3', '4', '5', '6', '7', '8'):
     if choice in ('1', '2', '3', '4'):
       try:
         num1 = float(input("Enter first number: "))
@@ -86,5 +94,13 @@ while True:
       except ValueError:
         print("Invalid input. Please enter numbers only.")
       print("The speed is:", calculate_speed(distance, time, unit))
+    elif choice == '8':
+      try:
+        base = float(input("Enter the base: "))
+        exponent = int(input("Enter the exponent: "))
+      except ValueError:
+        print("Invalid input. Please enter numbers only.")
+      sequence = calculate_exponential_sequence(base, exponent)
+      print("Exponential sequence:", sequence)
   else:
-    print("Invalid input. Please enter a number between 1 and 7.")
+    print("Invalid input. Please enter a number between 1 and 8.")
