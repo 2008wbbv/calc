@@ -56,6 +56,22 @@ def tan(angle):
   """Calculates the tangent of an angle in radians."""
   return math.tan(math.radians(angle))
 
+def log(base, x):
+  """Calculates the logarithm of x to the base."""
+  if base <= 0 or base == 1 or x <= 0:
+    return "Invalid input. Base must be greater than 0 and not equal to 1, and x must be greater than 0."
+  else:
+    return math.log(x, base)
+
+def factorial(n):
+  """Calculates the factorial of n."""
+  if n < 0:
+    return "Factorial is not defined for negative numbers."
+  elif n == 0:
+    return 1
+  else:
+    return n * factorial(n - 1)
+
 print("Select operation:")
 print("1. Add")
 print("2. Subtract")
@@ -68,13 +84,15 @@ print("8. Exponential Sequence")
 print("9. Sine (sin)")
 print("10. Cosine (cos)")
 print("11. Tangent (tan)")
+print("12. Logarithm (log)")
+print("13. Factorial")
 
 while True:
   # Take input from the user
-  choice = input("Enter choice(1/2/3/4/5/6/7/8/9/10/11): ")
+  choice = input("Enter choice(1/2/3/4/5/6/7/8/9/10/11/12/13): ")
 
-  # Check if choice is one of the eleven options
-  if choice in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'):
+  # Check if choice is one of the thirteen options
+  if choice in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'):
     if choice in ('1', '2', '3', '4'):
       try:
         num1 = float(input("Enter first number: "))
@@ -136,5 +154,18 @@ while True:
       except ValueError:
         print("Invalid input. Please enter a number only.")
       print("The tangent of", angle, "degrees is:", tan(angle))
+    elif choice == '12':
+      try:
+        base = float(input("Enter the base: "))
+        x = float(input("Enter the number: "))
+      except ValueError:
+        print("Invalid input. Please enter numbers only.")
+      print("The logarithm of", x, "to the base", base, "is:", log(base, x))
+    elif choice == '13':
+      try:
+        n = int(input("Enter a non-negative integer: "))
+      except ValueError:
+        print("Invalid input. Please enter a non-negative integer.")
+      print("The factorial of", n, "is:", factorial(n))
   else:
-    print("Invalid input. Please enter a number between 1 and 11.")
+    print("Invalid input. Please enter a number between 1 and 13.")
