@@ -1,3 +1,5 @@
+import math
+
 def add(x, y):
   """Adds two numbers together."""
   return x + y
@@ -23,8 +25,7 @@ def rectangle_area(length, width):
 
 def circle_area(radius):
   """Calculates the area of a circle."""
-  from math import pi
-  return pi * radius**2
+  return math.pi * radius**2
 
 def calculate_speed(distance, time, unit="mph"):
   """Calculates speed in miles per hour (mph) or kilometers per hour (kph)."""
@@ -43,6 +44,18 @@ def calculate_exponential_sequence(base, exponent):
     result.append(base**i)
   return result
 
+def sin(angle):
+  """Calculates the sine of an angle in radians."""
+  return math.sin(math.radians(angle))
+
+def cos(angle):
+  """Calculates the cosine of an angle in radians."""
+  return math.cos(math.radians(angle))
+
+def tan(angle):
+  """Calculates the tangent of an angle in radians."""
+  return math.tan(math.radians(angle))
+
 print("Select operation:")
 print("1. Add")
 print("2. Subtract")
@@ -52,13 +65,16 @@ print("5. Rectangle Area")
 print("6. Circle Area")
 print("7. Calculate Speed")
 print("8. Exponential Sequence")
+print("9. Sine (sin)")
+print("10. Cosine (cos)")
+print("11. Tangent (tan)")
 
 while True:
   # Take input from the user
-  choice = input("Enter choice(1/2/3/4/5/6/7/8): ")
+  choice = input("Enter choice(1/2/3/4/5/6/7/8/9/10/11): ")
 
-  # Check if choice is one of the eight options
-  if choice in ('1', '2', '3', '4', '5', '6', '7', '8'):
+  # Check if choice is one of the eleven options
+  if choice in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'):
     if choice in ('1', '2', '3', '4'):
       try:
         num1 = float(input("Enter first number: "))
@@ -102,5 +118,23 @@ while True:
         print("Invalid input. Please enter numbers only.")
       sequence = calculate_exponential_sequence(base, exponent)
       print("Exponential sequence:", sequence)
+    elif choice == '9':
+      try:
+        angle = float(input("Enter the angle in degrees: "))
+      except ValueError:
+        print("Invalid input. Please enter a number only.")
+      print("The sine of", angle, "degrees is:", sin(angle))
+    elif choice == '10':
+      try:
+        angle = float(input("Enter the angle in degrees: "))
+      except ValueError:
+        print("Invalid input. Please enter a number only.")
+      print("The cosine of", angle, "degrees is:", cos(angle))
+    elif choice == '11':
+      try:
+        angle = float(input("Enter the angle in degrees: "))
+      except ValueError:
+        print("Invalid input. Please enter a number only.")
+      print("The tangent of", angle, "degrees is:", tan(angle))
   else:
-    print("Invalid input. Please enter a number between 1 and 8.")
+    print("Invalid input. Please enter a number between 1 and 11.")
