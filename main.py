@@ -91,6 +91,34 @@ def power(base, exponent):
   """Calculates base raised to the exponent."""
   return base**exponent
 
+def calculate_average(numbers):
+  """Calculates the average of a list of numbers."""
+  if not numbers:
+    return "Cannot calculate average of an empty list."
+  total = sum(numbers)
+  average = total / len(numbers)
+  return average
+
+def calculate_sum(numbers):
+  """Calculates the sum of a list of numbers."""
+  if not numbers:
+    return "Cannot calculate sum of an empty list."
+  total = sum(numbers)
+  return total
+
+def calculate_variance(numbers):
+  """Calculates the variance of a list of numbers."""
+  if len(numbers) < 2:
+    return "Variance cannot be calculated for less than two numbers."
+  mean = calculate_average(numbers)
+  variance = sum((x - mean)**2 for x in numbers) / (len(numbers) - 1)
+  return variance
+
+def calculate_standard_deviation(numbers):
+  """Calculates the standard deviation of a list of numbers."""
+  variance = calculate_variance(numbers)
+  return math.sqrt(variance)
+
 print("Select operation:")
 print("1. Add")
 print("2. Subtract")
@@ -109,13 +137,17 @@ print("14. Square Root")
 print("15. Cube Root")
 print("16. Absolute Value")
 print("17. Power")
+print("18. Average")
+print("19. Sum")
+print("20. Variance")
+print("21. Standard Deviation")
 
 while True:
   # Take input from the user
-  choice = input("Enter choice(1/2/3/4/5/6/7/8/9/10/11/12/13/14/15/16/17): ")
+  choice = input("Enter choice(1/2/3/4/5/6/7/8/9/10/11/12/13/14/15/16/17/18/19/20/21): ")
 
-  # Check if choice is one of the seventeen options
-  if choice in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17'):
+  # Check if choice is one of the twenty-one options
+  if choice in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21'):
     if choice in ('1', '2', '3', '4'):
       try:
         num1 = float(input("Enter first number: "))
@@ -215,5 +247,29 @@ while True:
       except ValueError:
         print("Invalid input. Please enter numbers only.")
       print(base, "raised to the power of", exponent, "is:", power(base, exponent))
+    elif choice == '18':
+      try:
+        numbers = [float(x) for x in input("Enter numbers separated by spaces: ").split()]
+      except ValueError:
+        print("Invalid input. Please enter numbers only.")
+      print("The average of the numbers is:", calculate_average(numbers))
+    elif choice == '19':
+      try:
+        numbers = [float(x) for x in input("Enter numbers separated by spaces: ").split()]
+      except ValueError:
+        print("Invalid input. Please enter numbers only.")
+      print("The sum of the numbers is:", calculate_sum(numbers))
+    elif choice == '20':
+      try:
+        numbers = [float(x) for x in input("Enter numbers separated by spaces: ").split()]
+      except ValueError:
+        print("Invalid input. Please enter numbers only.")
+      print("The variance of the numbers is:", calculate_variance(numbers))
+    elif choice == '21':
+      try:
+        numbers = [float(x) for x in input("Enter numbers separated by spaces: ").split()]
+      except ValueError:
+        print("Invalid input. Please enter numbers only.")
+      print("The standard deviation of the numbers is:", calculate_standard_deviation(numbers))
   else:
-    print("Invalid input. Please enter a number between 1 and 17.")
+    print("Invalid input. Please enter a number between 1 and 21.")
