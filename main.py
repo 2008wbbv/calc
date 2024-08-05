@@ -273,3 +273,11 @@ while True:
       print("The standard deviation of the numbers is:", calculate_standard_deviation(numbers))
   else:
     print("Invalid input. Please enter a number between 1 and 21.")
+
+elif choice == '18':
+try:
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+except ValueError:
+    print("Invalid input. Please enter integers only.")
+print("The GCD of", num1, "and", num2, "is:", gcd(num1, num2))
