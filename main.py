@@ -83,6 +83,14 @@ def cube_root(x):
   """Calculates the cube root of x."""
   return x**(1/3)
 
+def absolute_value(x):
+  """Calculates the absolute value of x."""
+  return abs(x)
+
+def power(base, exponent):
+  """Calculates base raised to the exponent."""
+  return base**exponent
+
 print("Select operation:")
 print("1. Add")
 print("2. Subtract")
@@ -99,13 +107,15 @@ print("12. Logarithm (log)")
 print("13. Factorial")
 print("14. Square Root")
 print("15. Cube Root")
+print("16. Absolute Value")
+print("17. Power")
 
 while True:
   # Take input from the user
-  choice = input("Enter choice(1/2/3/4/5/6/7/8/9/10/11/12/13/14/15): ")
+  choice = input("Enter choice(1/2/3/4/5/6/7/8/9/10/11/12/13/14/15/16/17): ")
 
-  # Check if choice is one of the fifteen options
-  if choice in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'):
+  # Check if choice is one of the seventeen options
+  if choice in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17'):
     if choice in ('1', '2', '3', '4'):
       try:
         num1 = float(input("Enter first number: "))
@@ -192,5 +202,18 @@ while True:
       except ValueError:
         print("Invalid input. Please enter a number only.")
       print("The cube root of", x, "is:", cube_root(x))
+    elif choice == '16':
+      try:
+        x = float(input("Enter a number: "))
+      except ValueError:
+        print("Invalid input. Please enter a number only.")
+      print("The absolute value of", x, "is:", absolute_value(x))
+    elif choice == '17':
+      try:
+        base = float(input("Enter the base: "))
+        exponent = float(input("Enter the exponent: "))
+      except ValueError:
+        print("Invalid input. Please enter numbers only.")
+      print(base, "raised to the power of", exponent, "is:", power(base, exponent))
   else:
-    print("Invalid input. Please enter a number between 1 and 15.")
+    print("Invalid input. Please enter a number between 1 and 17.")
