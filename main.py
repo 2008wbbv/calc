@@ -72,6 +72,17 @@ def factorial(n):
   else:
     return n * factorial(n - 1)
 
+def square_root(x):
+  """Calculates the square root of x."""
+  if x < 0:
+    return "Square root is not defined for negative numbers."
+  else:
+    return math.sqrt(x)
+
+def cube_root(x):
+  """Calculates the cube root of x."""
+  return x**(1/3)
+
 print("Select operation:")
 print("1. Add")
 print("2. Subtract")
@@ -86,13 +97,15 @@ print("10. Cosine (cos)")
 print("11. Tangent (tan)")
 print("12. Logarithm (log)")
 print("13. Factorial")
+print("14. Square Root")
+print("15. Cube Root")
 
 while True:
   # Take input from the user
-  choice = input("Enter choice(1/2/3/4/5/6/7/8/9/10/11/12/13): ")
+  choice = input("Enter choice(1/2/3/4/5/6/7/8/9/10/11/12/13/14/15): ")
 
-  # Check if choice is one of the thirteen options
-  if choice in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'):
+  # Check if choice is one of the fifteen options
+  if choice in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'):
     if choice in ('1', '2', '3', '4'):
       try:
         num1 = float(input("Enter first number: "))
@@ -167,5 +180,17 @@ while True:
       except ValueError:
         print("Invalid input. Please enter a non-negative integer.")
       print("The factorial of", n, "is:", factorial(n))
+    elif choice == '14':
+      try:
+        x = float(input("Enter a number: "))
+      except ValueError:
+        print("Invalid input. Please enter a number only.")
+      print("The square root of", x, "is:", square_root(x))
+    elif choice == '15':
+      try:
+        x = float(input("Enter a number: "))
+      except ValueError:
+        print("Invalid input. Please enter a number only.")
+      print("The cube root of", x, "is:", cube_root(x))
   else:
-    print("Invalid input. Please enter a number between 1 and 13.")
+    print("Invalid input. Please enter a number between 1 and 15.")
